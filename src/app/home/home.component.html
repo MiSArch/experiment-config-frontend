@@ -1,0 +1,12 @@
+<div class="home-component">
+  <h1>Registered Services</h1>
+
+  <mat-list>
+    <mat-list-item *ngFor="let name of serviceNames">{{ name }}</mat-list-item>
+  </mat-list>
+
+  <button mat-button routerLink="/configuration" class="navigate-button">
+    Configure Services
+  </button>
+</div>
+

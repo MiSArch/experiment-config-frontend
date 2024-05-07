@@ -1,0 +1,24 @@
+nav ul {
+  list-style: none; /* Removes default list styling */
+  margin: 0;
+  padding: 0;
+  background: #333; /* Background color for the navbar */
+  text-align: center; /* Centers the list items horizontally */
+}
+
+nav li {
+  display: inline-block; /* Displays list items inline */
+}
+
+nav a {
+  display: block; /* Makes the anchor cover the whole area of the list item for easier clicking */
+  padding: 10px 20px; /* Adds padding inside the links for spacing */
+  text-decoration: none; /* Removes underline from links */
+  color: white; /* Text color for the links */
+  font-size: 16px; /* Sets the font size for the links */
+}
+
+nav a.active, nav a:hover {
+  background: #555; /* Background color for active/hover state */
+  color: #fff; /* Text color for active/hover state */
+}

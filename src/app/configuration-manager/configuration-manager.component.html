@@ -1,0 +1,38 @@
+<div class="configuration-manager ">
+  <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let service of services">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ service.name }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let variable of service.globalVariables">
+          <mat-form-field>
+            <mat-label>{{ variable.key }}</mat-label>
+            <input matInput [(ngModel)]="variable.value">
+          </mat-form-field>
+          <button mat-button (click)="updateVariable(service.name, variable)">Save</button>
+        </mat-list-item>
+      </mat-list>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let replica of service.replicas">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Replica ID: {{ replica.id }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item *ngFor="let variable of replica.replicaVariables">
+              <mat-form-field>
+                <mat-label>{{ variable.key }}</mat-label>
+                <input matInput [(ngModel)]="variable.value">
+              </mat-form-field>
+              <button mat-button (click)="updateReplicaVariable(service.name, replica.id, variable)">Save</button>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
