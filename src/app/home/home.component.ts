@@ -13,7 +13,7 @@ import { ConfigurationService } from '../configuration.service';
   standalone: true,
   imports: [RouterModule, CommonModule, MatListModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   // internal state of the service names

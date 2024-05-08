@@ -35,7 +35,6 @@ export class ConfigurationService {
     return this.http.get<ServiceConfiguration[]>(`${this.baseUrl}`);
   }
 
-
   /**
    * Updates one service variable.
    * @param serviceName - The name of the service.

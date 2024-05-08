@@ -204,7 +204,6 @@ export class ConfigurationManagerComponent implements OnInit {
     return variable;
   }
 
-  
   /**
    * Updates the internal state of the service configuration with the provided updated service.
    * @param serviceName - The name of the service to be updated.
@@ -218,10 +217,14 @@ export class ConfigurationManagerComponent implements OnInit {
       if (service.name === serviceName) {
         service.globalVariables = updatedService.globalVariables;
         service.variableDefinitions = updatedService.variableDefinitions;
-        service.replicas = service.replicas.map(replica => {
-          const updatedReplica = updatedService.replicas.find(serviceReplica => serviceReplica.id === replica.id);
-          return updatedReplica ? Object.assign(replica, updatedReplica) : replica;
-      });
+        service.replicas = service.replicas.map((replica) => {
+          const updatedReplica = updatedService.replicas.find(
+            (serviceReplica) => serviceReplica.id === replica.id
+          );
+          return updatedReplica
+            ? Object.assign(replica, updatedReplica)
+            : replica;
+        });
       }
       return this.stringify(service);
     });
