@@ -7,12 +7,14 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-list>
-        <mat-list-item *ngFor="let variable of service.globalVariables">
-          <mat-form-field>
-            <mat-label>{{ variable.key }}</mat-label>
-            <input matInput [(ngModel)]="variable.value">
-          </mat-form-field>
-          <button mat-button (click)="updateVariable(service.name, variable)">Save</button>
+        <mat-list-item class="list-item"*ngFor="let variable of service.globalVariables">
+          <div class="form">
+            <mat-form-field class="form-field">
+              <mat-label>{{ variable.key }}</mat-label>
+              <input matInput [(ngModel)]="variable.value">
+            </mat-form-field>
+            <button mat-button class="button-service" (click)="$event.stopPropagation(); $event.stopImmediatePropagation(); updateServiceVariable(service.name, variable)">Update</button>
+          </div>
         </mat-list-item>
       </mat-list>
       <mat-accordion>
@@ -23,16 +25,24 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list>
-            <mat-list-item *ngFor="let variable of replica.replicaVariables">
-              <mat-form-field>
-                <mat-label>{{ variable.key }}</mat-label>
-                <input matInput [(ngModel)]="variable.value">
-              </mat-form-field>
-              <button mat-button (click)="updateReplicaVariable(service.name, replica.id, variable)">Save</button>
+            <mat-list-item class="list-item" *ngFor="let variable of replica.replicaVariables">
+              <div class="form">
+                <mat-form-field class="form-field">
+                  <mat-label>{{ variable.key }}</mat-label>
+                  <input matInput [(ngModel)]="variable.value">
+                </mat-form-field>
+                <button mat-button class="button-replica" (click)="updateReplicaVariable(service.name, replica.id, variable); $event.stopPropagation()">Update</button>
+              </div>
             </mat-list-item>
           </mat-list>
+          <mat-action-row>
+            <button mat-button class="button-replica" (click)="updateReplicaVariables(service.name, replica.id, replica.replicaVariables); $event.stopPropagation(); $event.stopImmediatePropagation()">Batch Update Replica</button>
+          </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
+      <mat-action-row>
+        <button mat-button class="button-service" (click)="updateServiceVariables(service.name, service.globalVariables);$event.stopPropagation(); $event.stopImmediatePropagation()">Batch Update Service</button>
+      </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

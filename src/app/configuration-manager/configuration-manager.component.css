@@ -15,30 +15,22 @@
 }
 
 .configuration-manager .mat-expansion-panel-header {
-  background-color: #fafafa; /* very light grey background */
+  background-color: #e0e0e0; /* very light grey background */
   color: #333; /* darker color for text for better readability */
-  font-size: 1.1rem; /* slightly larger font size */
   padding: 16px; /* more padding for better touch */
 }
 
 .configuration-manager .mat-panel-title {
-  font-size: 1.2rem; /* Larger font size for titles */
   color: #333; /* Darker text color for better readability */
 }
 
-.configuration-manager .mat-list-item {
-  border-bottom: 1px solid #f0f0f0; /* lighter border for list items */
-  padding: 12px 16px; /* more padding around list items */
+.configuration-manager .list-item {
+  height: auto;
 }
 
 .configuration-manager h4 {
   flex: 1; /* h4 takes up the full width it can */
   margin-right: 20px; /* Space between the title and form field */
-}
-
-.configuration-manager .mat-form-field {
-  width: 100% !important; /* full width form fields */
-  padding: 0 16px; /* padding inside the fields container */
 }
 
 .configuration-manager .mat-input-element {
@@ -47,16 +39,42 @@
   border-radius: 4px; /* rounded corners for input fields */
 }
 
-.configuration-manager button {
+.configuration-manager .button-replica {
   margin-left: 10px; /* Space between the input field and button */
   color: #ffffff; /* White text color */
-  background-color: #007bff; /* Bootstrap primary color for button */
+  background-color: #4A90E2; 
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer; /* Pointer cursor on hover */
 }
 
+.configuration-manager .button-service {
+  margin-left: 10px; /* Space between the input field and button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #32CD32; /* Primary color for button */
+}
+
 .configuration-manager button:hover {
-  background-color: #0056b3; /* Darker shade of primary color on hover */
+  background-color: black; /* Darker shade of primary color on hover */
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-field {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.panel-description-right-side {
+  display: flex;
+  justify-content: flex-end;
 }

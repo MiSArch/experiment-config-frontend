@@ -4,10 +4,12 @@ import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+/**
+ * Represents the configuration of the application.
+ */
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule, BrowserAnimationsModule),
+    importProvidersFrom(HttpClientModule, BrowserAnimationsModule)
   ]
 };
