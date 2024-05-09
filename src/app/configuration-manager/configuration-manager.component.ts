@@ -44,10 +44,10 @@ export class ConfigurationManagerComponent implements OnInit {
   });
   // examle values for the variables
   exampleValues = {
-    "pubSubDeterioration": `{"Delay": 5000, "DelayProbability": 0.5, "ErrorProbability": 0.2}`,
-    "serviceInvocationDeterioration": `{"Path": "payments", "Delay": 5000, "DelayProbability": 0.5, "ErrorProbability": 0.2, "ErrorCode": 0.2}`,
+    "pubSubDeterioration": `{"delay": 5000, "delayProbability": 0.5, "errorProbability": 0.2}`,
+    "serviceInvocationDeterioration": `{"path": "payments", "delay": 5000, "delayProbability": 0.5, "errorProbability": 0.2, "errorCode": 404}`,
     "artificialMemoryUsage": "1000000000",
-    "artificialCPUUsage": `{"UsageDuration": 5000, "PauseDuration": 5000}`,
+    "artificialCPUUsage": `{"usageDuration": 5000, "pauseDuration": 5000}`,
   }
 
   /**
