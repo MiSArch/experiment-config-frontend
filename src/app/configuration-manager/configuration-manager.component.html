@@ -1,4 +1,135 @@
-<div class="configuration-manager ">
+<div class="configuration-manager">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Configuration Manager </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        This page allows to configure all MisArch services over the
+        experiment-config sidecar. In the following, possible configurations are
+        briefly explained with examples, for the full specification please visit
+        the MisArch documentation.
+      </p>
+      <mat-divider></mat-divider>
+      <h4>pubSubDeterioration</h4>
+      <mat-grid-list cols="10" rowHeight="80px">
+        <mat-grid-tile [colspan]="4">
+          <p>
+            This configuration introduces artificial delay and error rate on
+            service invocation (simulates network latency and errors)
+          </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4">
+          <textarea
+            id="clipboard-pubSubDeterioration-textarea"
+            [(ngModel)]="exampleValues.pubSubDeterioration"
+            [disabled]="true"
+            class="example-textarea"
+          ></textarea>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button
+            [cdkCopyToClipboard]="exampleValues.pubSubDeterioration"
+            class="button-clipboard"
+          >
+            Copy to clipboard
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <h4>serviceInvocationDeterioration</h4>
+      <mat-grid-list cols="10" rowHeight="80px">
+        <mat-grid-tile [colspan]="4">
+          <p>
+            This configuration introduces artificial delay and error rate on
+            Dapr Events (simulates network latency and errors)
+          </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4">
+          <textarea
+            id="clipboard-serviceInvocationDeterioration-textarea"
+            [(ngModel)]="exampleValues.serviceInvocationDeterioration"
+            [disabled]="true"
+            class="example-textarea"
+          ></textarea>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button
+            [cdkCopyToClipboard]="exampleValues.serviceInvocationDeterioration"
+            class="button-clipboard"
+          >
+            Copy to clipboard
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <h4>artificialCPUUsage</h4>
+      <mat-grid-list cols="10" rowHeight="80px">
+        <mat-grid-tile [colspan]="4">
+          <p>
+            This configuration introduces artificial CPU load on one or more
+            threads (simulates a performance degradation)
+          </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4">
+          <textarea
+            id="clipboard-artificialCPUUsage-textarea"
+            [(ngModel)]="exampleValues.artificialCPUUsage"
+            [disabled]="true"
+            class="example-textarea"
+          ></textarea>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button
+            [cdkCopyToClipboard]="exampleValues.artificialCPUUsage"
+            class="button-clipboard"
+          >
+            Copy to clipboard
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <h4>artificialMemoryUsage</h4>
+      <mat-grid-list cols="10" rowHeight="80px">
+        <mat-grid-tile [colspan]="4">
+          <p>
+            This configuration introduces artificial memory usage (simulates a
+            memory leak)
+          </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4">
+          <textarea
+            id="clipboard-artificialMemoryUsage-textarea"
+            [(ngModel)]="exampleValues.artificialMemoryUsage"
+            [disabled]="true"
+            class="example-textarea"
+          ></textarea>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button
+            [cdkCopyToClipboard]="exampleValues.artificialMemoryUsage"
+            class="button-clipboard"
+          >
+            Copy to clipboard
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider></mat-divider>
+      <p>
+        Please be advised that the services and replicas need to be updated
+        manually with the "reload data" button. If the reference architecture is
+        used for load-balancing experiments, it might be easier to define the
+        configuration via the REST API.
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button
+        mat-button
+        class="button-clipboard"
+        (click)="loadServiceConfigurations()"
+      >
+        Reload data
+      </button>
+    </mat-card-actions>
+  </mat-card>
   <mat-accordion multi="true">
     <mat-expansion-panel *ngFor="let service of services">
       <mat-expansion-panel-header>
@@ -7,41 +138,88 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-list>
-        <mat-list-item class="list-item"*ngFor="let variable of service.globalVariables">
+        <mat-list-item
+          class="list-item"
+          *ngFor="let variable of service.globalVariables"
+        >
           <div class="form">
             <mat-form-field class="form-field">
               <mat-label>{{ variable.key }}</mat-label>
-              <input matInput [(ngModel)]="variable.value">
+              <input matInput [(ngModel)]="variable.value" />
             </mat-form-field>
-            <button mat-button class="button-service" (click)="$event.stopPropagation(); $event.stopImmediatePropagation(); updateServiceVariable(service.name, variable)">Update</button>
+            <button
+              mat-button
+              class="button-service"
+              (click)="
+                $event.stopPropagation();
+                $event.stopImmediatePropagation();
+                updateServiceVariable(service.name, variable)
+              "
+            >
+              Update
+            </button>
           </div>
         </mat-list-item>
       </mat-list>
       <mat-accordion>
         <mat-expansion-panel *ngFor="let replica of service.replicas">
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              Replica ID: {{ replica.id }}
-            </mat-panel-title>
+            <mat-panel-title> Replica ID: {{ replica.id }} </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list>
-            <mat-list-item class="list-item" *ngFor="let variable of replica.replicaVariables">
+            <mat-list-item
+              class="list-item"
+              *ngFor="let variable of replica.replicaVariables"
+            >
               <div class="form">
                 <mat-form-field class="form-field">
                   <mat-label>{{ variable.key }}</mat-label>
-                  <input matInput [(ngModel)]="variable.value">
+                  <input matInput [(ngModel)]="variable.value" />
                 </mat-form-field>
-                <button mat-button class="button-replica" (click)="updateReplicaVariable(service.name, replica.id, variable); $event.stopPropagation()">Update</button>
+                <button
+                  mat-button
+                  class="button-replica"
+                  (click)="
+                    updateReplicaVariable(service.name, replica.id, variable);
+                    $event.stopPropagation()
+                  "
+                >
+                  Update
+                </button>
               </div>
             </mat-list-item>
           </mat-list>
           <mat-action-row>
-            <button mat-button class="button-replica" (click)="updateReplicaVariables(service.name, replica.id, replica.replicaVariables); $event.stopPropagation(); $event.stopImmediatePropagation()">Batch Update Replica</button>
+            <button
+              mat-button
+              class="button-replica"
+              (click)="
+                updateReplicaVariables(
+                  service.name,
+                  replica.id,
+                  replica.replicaVariables
+                );
+                $event.stopPropagation();
+                $event.stopImmediatePropagation()
+              "
+            >
+              Batch Update Replica
+            </button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
       <mat-action-row>
-        <button mat-button class="button-service" (click)="updateServiceVariables(service.name, service.globalVariables);$event.stopPropagation(); $event.stopImmediatePropagation()">Batch Update Service</button>
+        <button
+          mat-button
+          class="button-service"
+          (click)="
+            updateServiceVariables(service.name, service.globalVariables);
+            $event.stopPropagation();
+            $event.stopImmediatePropagation()
+          "
+        >
+          Batch Update Service
+        </button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>

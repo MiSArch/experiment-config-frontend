@@ -30,7 +30,7 @@
 
 .configuration-manager h4 {
   flex: 1; /* h4 takes up the full width it can */
-  margin-right: 20px; /* Space between the title and form field */
+  margin-bottom: 0%;
 }
 
 .configuration-manager .mat-input-element {
@@ -57,6 +57,20 @@
   border-radius: 4px;
   cursor: pointer; /* Pointer cursor on hover */
   background-color: #32CD32; /* Primary color for button */
+}
+
+.configuration-manager .button-clipboard {
+  margin-left: 10px; /* Space between the input field and button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #9b9b9b; /* Primary color for button */
+}
+
+.configuration-manager .example-textarea {
+  width: 600px;
 }
 
 .configuration-manager button:hover {

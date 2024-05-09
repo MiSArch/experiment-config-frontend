@@ -5,6 +5,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import Ajv from 'ajv';
@@ -22,6 +25,9 @@ import Ajv from 'ajv';
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
+    ClipboardModule,
+    MatGridListModule,
     CommonModule,
   ],
   styleUrl: './configuration-manager.component.css',
@@ -31,7 +37,18 @@ export class ConfigurationManagerComponent implements OnInit {
   // internal state of the services
   services: ServiceConfiguration[] = [];
   // ajv instance for validation
-  ajv: any;
+  ajv = new Ajv({
+    allErrors: true,
+    coerceTypes: true,
+    useDefaults: true,
+  });
+  // examle values for the variables
+  exampleValues = {
+    "pubSubDeterioration": `{"Delay": 5000, "DelayProbability": 0.5, "ErrorProbability": 0.2}`,
+    "serviceInvocationDeterioration": `{"Path": "payments", "Delay": 5000, "DelayProbability": 0.5, "ErrorProbability": 0.2, "ErrorCode": 0.2}`,
+    "artificialMemoryUsage": "1000000000",
+    "artificialCPUUsage": `{"UsageDuration": 5000, "PauseDuration": 5000}`,
+  }
 
   /**
    * Initializes a new instance of the ConfigurationManagerComponent class.
@@ -41,17 +58,17 @@ export class ConfigurationManagerComponent implements OnInit {
 
   /**
    * Initializes the component
-   * Queries all serviceConfigurations from the experiment-config service.
-   * Initializes the ajv instance for validation.
    */
   ngOnInit(): void {
+    this.loadServiceConfigurations();
+  }
+
+  /**
+   * Loads the service configurations from the experiment-config service.
+   */
+  loadServiceConfigurations(): void {
     this.configService.getAllServiceConfigurations().subscribe((services) => {
       this.services = services.map((service) => this.stringify(service));
-      this.ajv = new Ajv({
-        allErrors: true,
-        coerceTypes: true,
-        useDefaults: true,
-      });
     });
   }
 
