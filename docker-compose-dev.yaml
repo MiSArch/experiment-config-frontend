@@ -1,0 +1,7 @@
+services:
+  experiment-config-frontend:
+    extends:
+      file: docker-compose-base.yaml
+      service: experiment-config-frontend
+    ports:
+      - "4200:80"

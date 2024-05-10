@@ -1,0 +1,10 @@
+services:
+  experiment-config-frontend:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - CONFIG_SERVICE_ENDPOINT=http://localhost:3000/configuration
+    environment:
+      - CONFIG_SERVICE_ENDPOINT=http://localhost:3000/configuration
