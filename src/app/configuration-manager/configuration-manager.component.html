@@ -16,7 +16,9 @@
         <mat-grid-tile [colspan]="4">
           <p>
             This configuration introduces artificial delay and error rate on
-            service invocation (simulates network latency and errors)
+            service invocation (simulates network latency and errors).<br />
+            The example introduces a 5-second delay with 50% propability and a
+            20% error rate.
           </p>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="4">
@@ -37,11 +39,15 @@
         </mat-grid-tile>
       </mat-grid-list>
       <h4>serviceInvocationDeterioration</h4>
-      <mat-grid-list cols="10" rowHeight="80px">
+      <mat-grid-list cols="10">
         <mat-grid-tile [colspan]="4">
           <p>
             This configuration introduces artificial delay and error rate on
-            Dapr Events (simulates network latency and errors)
+            Dapr Events (simulates network latency and errors).<br />
+            The example introduces a 5-second delay with 50% propability and a
+            20% error rate for all requests on a path starting with "payment"
+            and a 2-second delay with 100% propability and a 0% error rate on
+            all requests on a path starting with "paymentInformations".
           </p>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="4">
@@ -61,37 +67,12 @@
           </button>
         </mat-grid-tile>
       </mat-grid-list>
-      <h4>artificialCPUUsage</h4>
-      <mat-grid-list cols="10" rowHeight="80px">
-        <mat-grid-tile [colspan]="4">
-          <p>
-            This configuration introduces artificial CPU load on one or more
-            threads (simulates a performance degradation)
-          </p>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="4">
-          <textarea
-            id="clipboard-artificialCPUUsage-textarea"
-            [(ngModel)]="exampleValues.artificialCPUUsage"
-            [disabled]="true"
-            class="example-textarea"
-          ></textarea>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2">
-          <button
-            [cdkCopyToClipboard]="exampleValues.artificialCPUUsage"
-            class="button-clipboard"
-          >
-            Copy to clipboard
-          </button>
-        </mat-grid-tile>
-      </mat-grid-list>
       <h4>artificialMemoryUsage</h4>
       <mat-grid-list cols="10" rowHeight="80px">
         <mat-grid-tile [colspan]="4">
           <p>
             This configuration introduces artificial memory usage (simulates a
-            memory leak)
+            memory leak). The example allocates 1GB of memory.
           </p>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="4">
@@ -111,8 +92,36 @@
           </button>
         </mat-grid-tile>
       </mat-grid-list>
+      <h4>artificialCPUUsage</h4>
+      <mat-grid-list cols="10" rowHeight="80px">
+        <mat-grid-tile [colspan]="4">
+          <p>
+            This configuration introduces artificial CPU load on one or more
+            threads (simulates a performance degradation).<br />
+            The example spins up two threads, that run and sleep 5 seconds in a
+            loop.
+          </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4">
+          <textarea
+            id="clipboard-artificialCPUUsage-textarea"
+            [(ngModel)]="exampleValues.artificialCPUUsage"
+            [disabled]="true"
+            class="example-textarea"
+          ></textarea>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+          <button
+            [cdkCopyToClipboard]="exampleValues.artificialCPUUsage"
+            class="button-clipboard"
+          >
+            Copy to clipboard
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
       <mat-divider></mat-divider>
       <p>
+        All configurations can be reset by setting the value to "null". <br>
         Please be advised that the services and replicas need to be updated
         manually with the "reload data" button. If the reference architecture is
         used for load-balancing experiments, it might be easier to define the
@@ -130,6 +139,7 @@
       </button>
     </mat-card-actions>
   </mat-card>
+  <h3>Available Services</h3>
   <mat-accordion multi="true">
     <mat-expansion-panel *ngFor="let service of services">
       <mat-expansion-panel-header>

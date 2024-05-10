@@ -6,8 +6,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import {ClipboardModule} from '@angular/cdk/clipboard';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import Ajv from 'ajv';
@@ -44,11 +44,11 @@ export class ConfigurationManagerComponent implements OnInit {
   });
   // examle values for the variables
   exampleValues = {
-    "pubSubDeterioration": `{"delay": 5000, "delayProbability": 0.5, "errorProbability": 0.2}`,
-    "serviceInvocationDeterioration": `{"path": "payments", "delay": 5000, "delayProbability": 0.5, "errorProbability": 0.2, "errorCode": 404}`,
-    "artificialMemoryUsage": "1000000000",
-    "artificialCPUUsage": `{"usageDuration": 5000, "pauseDuration": 5000}`,
-  }
+    pubSubDeterioration: `{"delay": 5000, "delayProbability": 0.5, "errorProbability": 0.2}`,
+    serviceInvocationDeterioration: `[{"path": "payments", "delay": 5000, "delayProbability": 0.5, "errorProbability": 0.2, "errorCode": 404}, {"path": "paymentInformations", "delay": 2, "delayProbability": 1, "errorProbability": 0, "errorCode": 404}]`,
+    artificialMemoryUsage: '1000000000',
+    artificialCPUUsage: `[{"usageDuration": 5000, "pauseDuration": 5000}, {"usageDuration": 5000, "pauseDuration": 5000}]`,
+  };
 
   /**
    * Initializes a new instance of the ConfigurationManagerComponent class.

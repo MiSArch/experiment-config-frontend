@@ -4,10 +4,10 @@
 }
 
 .configuration-manager .mat-expansion-panel {
-  border: 1px solid #e0e0e0; /* softer border color */
+  border: 1px solid #e0e0e0;
   margin-bottom: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .configuration-manager .mat-expansion-panel:hover {
@@ -29,8 +29,14 @@
 }
 
 .configuration-manager h4 {
-  flex: 1; /* h4 takes up the full width it can */
+  flex: 1;
+  font-weight: 480;
   margin-bottom: 0%;
+}
+
+.configuration-manager h3 {
+  flex: 1;
+  font-weight: 480;
 }
 
 .configuration-manager .mat-input-element {
@@ -70,7 +76,8 @@
 }
 
 .configuration-manager .example-textarea {
-  width: 600px;
+  width: 500px;
+  height: 60px;
 }
 
 .configuration-manager button:hover {
