@@ -37,11 +37,7 @@ export class ConfigurationManagerComponent implements OnInit {
   // internal state of the services
   services: ServiceConfiguration[] = [];
   // ajv instance for validation
-  ajv = new Ajv({
-    allErrors: true,
-    coerceTypes: true,
-    useDefaults: true,
-  });
+  ajv = new Ajv();
   // examle values for the variables
   exampleValues = {
     pubSubDeterioration: `{"delay": 5000, "delayProbability": 0.5, "errorProbability": 0.2}`,
