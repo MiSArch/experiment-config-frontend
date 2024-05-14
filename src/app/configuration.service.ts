@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ServiceConfiguration, ConfigurationVariable } from './models';
-import { environment } from '../environments/environment';
 
 /**
  * Represents the ConfigurationService class.
@@ -12,7 +11,8 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 export class ConfigurationService {
-  private baseUrl = environment.CONFIG_SERVICE_ENDPOINT;
+  // url for nginx proxy
+  private baseUrl = '/experiment-config/configuration';
 
   /**
    * Initializes a new instance of the ConfigurationService class.
