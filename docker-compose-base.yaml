@@ -4,5 +4,3 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - EXPERIMENT_CONFIG_ENDPOINT=localhost:3000
