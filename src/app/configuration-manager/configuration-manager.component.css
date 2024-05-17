@@ -1,0 +1,101 @@
+.configuration-manager {
+  display: block;
+  margin: 20px;
+}
+
+.configuration-manager .mat-expansion-panel {
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.configuration-manager .mat-expansion-panel:hover {
+  border-color: #b3b3b3; /* Slightly darker border on hover */
+}
+
+.configuration-manager .mat-expansion-panel-header {
+  background-color: #e0e0e0; /* very light grey background */
+  color: #333; /* darker color for text for better readability */
+  padding: 16px; /* more padding for better touch */
+}
+
+.configuration-manager .mat-panel-title {
+  color: #333; /* Darker text color for better readability */
+}
+
+.configuration-manager .list-item {
+  height: auto;
+}
+
+.configuration-manager h4 {
+  flex: 1;
+  font-weight: 480;
+  margin-bottom: 0%;
+}
+
+.configuration-manager h3 {
+  flex: 1;
+  font-weight: 480;
+}
+
+.configuration-manager .mat-input-element {
+  padding: 8px;
+  border: 1px solid #ccc; /* subtle border for inputs */
+  border-radius: 4px; /* rounded corners for input fields */
+}
+
+.configuration-manager .button-replica {
+  margin-left: 10px; /* Space between the input field and button */
+  color: #ffffff; /* White text color */
+  background-color: #4A90E2; 
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.configuration-manager .button-service {
+  margin-left: 10px; /* Space between the input field and button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #32CD32; /* Primary color for button */
+}
+
+.configuration-manager .button-clipboard {
+  margin-left: 10px; /* Space between the input field and button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #9b9b9b; /* Primary color for button */
+}
+
+.configuration-manager .example-textarea {
+  width: 500px;
+  height: 60px;
+}
+
+.configuration-manager button:hover {
+  background-color: black; /* Darker shade of primary color on hover */
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-field {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.panel-description-right-side {
+  display: flex;
+  justify-content: flex-end;
+}
